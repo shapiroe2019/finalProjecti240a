@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 
-#include "dummySearch.cc"
+#include "rabin_karp.h"
 
 /**returns index of argv[2] if it exists
  * if it doesn't exist it returns -1**/
@@ -24,10 +24,9 @@ int go(int argc, char* argv[]){
     std::string content( (std::istreambuf_iterator<char>(inFile) ),
                          (std::istreambuf_iterator<char>()    ) ); //entire text file will be one giant string
 
-    std::string word {argv[1]};
+    std::string word {argv[2]};
 
-    //INSERT SEARCH ALGO CODE HERE
-    dummySearch search;
+    rabinKarp search;
 
     int x = search.search(&content, &word);
 
@@ -43,7 +42,7 @@ int main(int argc, char* argv[]){
     int retVal = go(argc, argv);
 
     if(retVal == -1){
-      std::cout<< "The word is not in the text file" << << std::endl;
+      std::cout<< "The word is not in the text file" << argv[1] << std::endl;
     }
     else if(retVal == -2){
       std::cerr << "usage: ./search FILE 'word'" << std::endl;
