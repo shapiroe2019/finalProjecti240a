@@ -3,6 +3,7 @@
 #include <fstream>
 
 #include "rabin_karp.h"
+#include "boyer_moore.h"
 
 /**returns index of argv[2] if it exists
  * if it doesn't exist it returns -1**/
@@ -26,7 +27,8 @@ int go(int argc, char* argv[]){
 
     std::string word {argv[2]};
 
-    rabinKarp search;
+    // rabinKarp search;
+    boyerMoore search;
 
     int x = search.search(&content, &word);
 
